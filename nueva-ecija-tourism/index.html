@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nueva Ecija Tourism — Header &amp; Interactive Map</title>
+  <!-- Google Fonts matching the classic serif display + clean sans-serif aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SITE HEADER COMPONENT -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="#top" class="brand" aria-label="Nueva Ecija Tourism Home">
+        <span class="brand-title">NUEVA ECIJA</span>
+        <span class="brand-subtitle">THE RICE GRANARY &amp; NATURE HAVEN</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary Navigation">
+        <button
+          type="button"
+          id="open-map-btn"
+          class="map-trigger-btn"
+          aria-expanded="false"
+          aria-controls="luzon-map-overlay"
+        >
+          <svg
+            class="pin-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Explore Map</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LUZON STATIC MAP OVERLAY -->
+  <div
+    id="luzon-map-overlay"
+    class="map-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="map-overlay-title"
+    hidden
+  >
+    <div class="map-backdrop" id="map-backdrop"></div>
+
+    <div class="map-modal">
+      <div class="map-modal-header">
+        <div class="map-modal-heading">
+          <h2 id="map-overlay-title">NUEVA ECIJA DESTINATIONS</h2>
+          <p>Select a pin on the Luzon map to preview key attractions</p>
+        </div>
+
+        <button
+          type="button"
+          id="close-map-btn"
+          class="map-close-btn"
+          aria-label="Close Luzon map"
+        >
+          <span aria-hidden="true">&times;</span>
+          <span class="close-text">Close</span>
+        </button>
+      </div>
+
+      <div class="map-workspace">
+        <!-- Static Map Stage: Pins are positioned as % relative to this exact image box -->
+        <div class="map-viewport">
+          <div class="map-stage" id="map-stage">
+            <img
+              src="7kv7s7cor4fe1 (1).jpeg"
+              alt="Map of Luzon highlighting Nueva Ecija tourist destinations"
+              class="luzon-map-img"
+            />
+            <!-- Pins are injected dynamically by script.js -->
+            <div class="map-pins-layer" id="map-pins-layer"></div>
+          </div>
+        </div>
+
+        <!-- Location Preview Card -->
+        <aside class="preview-panel" aria-live="polite">
+          <div id="preview-empty" class="preview-empty">
+            <p class="empty-kicker">INTERACTIVE PROVINCE GUIDE</p>
+            <h3>Choose a Pin</h3>
+            <p>
+              Click any marker in Central Luzon to view destination highlights,
+              municipality details, and visitor features.
+            </p>
+          </div>
+
+          <article id="preview-card" class="preview-card" hidden>
+            <div class="preview-media" id="preview-media" role="img" aria-label="Destination photo placeholder">
+              <span class="media-badge" id="preview-municipality-badge">Municipality</span>
+              <span class="media-placeholder-label">Photo Placeholder</span>
+            </div>
+
+            <div class="preview-body">
+              <p class="preview-municipality" id="preview-municipality"></p>
+              <h3 class="preview-title" id="preview-title"></h3>
+              <p class="preview-description" id="preview-description"></p>
+
+              <ul class="preview-features" id="preview-features"></ul>
+
+              <div class="preview-actions">
+                <!-- Placeholder action button: hook up click handler or href via data-location in script.js -->
+                <button
+                  type="button"
+                  id="learn-more-btn"
+                  class="learn-more-btn"
+                  data-location=""
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </article>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
